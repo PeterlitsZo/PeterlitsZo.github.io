@@ -1,0 +1,64 @@
+就先从第三个教程开始看......
+------------------------------------------------------------------------
+    import sys
+    from PyQt5.QtWidgets import QApplication, QWidget
+
+    class Widget(QWidget):
+        def __init__(self):
+            super().__init__()
+            self.title = 'Simple Window'
+            self.left = 10
+            self.top = 10
+            self.width = 566            #400*1.41, looks better
+            self.height = 400
+            self.initUI()
+        def initUI(self):
+            self.setWindowTitle(self.title)
+            self.setGeometry(self.left, self.top, self.width, self.height)
+            self.show()
+
+    if __name__=='__main__':
+        app = QApplication(sys.argv)
+        ex = Widget()
+        sys.exit(app.exec_())
+------------------------------------------------------------------------
+首先这个是可以运行的~但是有几点不太懂：
+    1.  必须要在__init__中有super().__init__()，不然会报错：RuntimeError: super-class __init__() of type Widget was never called.
+        说是继承后的子类要初始化它的父类，不是很清楚为什么。
+    2.  表面上看起来实例化后的app和Widget()好像没有什么关联，既然生成的部件和Application密切相关，为什么不是app去调用Widget呢
+        （胡言乱语中（＞人＜；））
+
+
+------------------------------------------------------------------------
+    import sys
+    from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
+
+    class Widget(QMainWindow):
+        def __init__(self):
+            super().__init__()
+            self.title = 'Simple Window'
+            self.left = 100
+            self.top = 100
+            self.width = 566            #400*1.41, looks better
+            self.height = 400
+            self.initUI()
+        def initUI(self):
+            self.setWindowTitle(self.title)
+            self.setGeometry(self.left, self.top, self.width, self.height)
+            self.statusBar().showMessage('Message in statusbar1.')
+            self.statusBar().showMessage('Message in statusbar2.')
+            self.show()
+
+    if __name__=='__main__':
+        app = QApplication(sys.argv)
+        ex = Widget()
+        sys.exit(app.exec_())
+------------------------------------------------------------------------
+这个当然是可以运行的（这不废话吗......）statusBar只显示了Message in statusbar2.，说明它只有一栏而且会刷新欸......
+MainWindow调用其包含的对象后是返回了一个对象吗、哈哈哈哈。
+
+
+这次从PyQt5.QtWidget中拿到了命名空间QPushButton，发现了一个小事情：初始化对象时一定要放在self.show()前面，不然是不会show的、话是这么说，但还是感觉好奇怪哦。
+使用statusBar的方法和使用QPushButter的方法明显不一样，应该是因为：statusBar和QPushButton虽然都是从QtWidgets继承来的，但声明、定义的位置不一样。在某个类中定义的就必须要到该类的命名空间中找。
+而button按下后产生信息（button.clicked.connect(self.on_click)）的意思应该是：如果触发了事件，就找到之前设定的槽......很明显，这是在设置槽呀。
+不明显的是，@pyqtSlot()是干嘛的呀？@开头......
