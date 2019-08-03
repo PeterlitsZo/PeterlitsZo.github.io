@@ -1,4 +1,4 @@
-﻿#date:init_time=2019/08/02;
+﻿#date:init_time=2019/08/03;
 还是想给樱岛弄一个进度条，就用了pyQt，首先要说的是，用方法的形式调用，传入的第一个参数就是self~ 
 这就是...takes 1 positional argument but 2 were given的原因了！（至少我的是这样、嘻嘻）
 现在为了......欸，为了什么？maye、忘了......
