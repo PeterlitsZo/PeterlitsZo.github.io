@@ -1,0 +1,46 @@
+﻿#date:init_time=2019/08/07;
+windows：
+	addins\			系统附加文件夹，用来存放系统附加功能的文件。
+	AppCompat\		与应用程序兼容性相关的一个文件夹。
+	AppPatch\		用来保存程序修补备份的文件夹。
+	assembly\		保存了.netframework功能的程序集。
+	BitLockerDiscoveryVolumeContents\（隐藏文件夹）
+					为BitLocker加密功能保留的文件夹。
+	Cursors\		用于保留鼠标指针的文件夹。
+	debug\			为系统调试文件夹，用来存放系统运行过程中调试模块的日历文件。
+	Downloaded Installations\
+					用于存放使用Windows Installer技术的安装程序，主要用来对程序进行修补等操作。
+	Downloaded Program Files\
+					为下载程序文件夹，用来存放扩展IE功能的ActiveX等插件。
+	en-US\			语言文件夹，表示美国英语。
+	Fonts\			字体文件夹。
+	Help\			用来存放Windows的帮助文件。
+	IME\			用;于存放输入法的相关信息文件。
+	inf\			用于存放INF文件。其最常见的应用是为硬件设备提供驱动程序服务。
+	Installer\（隐藏文件夹）
+					用于储存安装应用的程序等信息。
+	Media\			用于保存声音文件。
+	Offline Web Page\
+					用于存放脱机浏览文件。
+	Prefetch\		预读取文件夹，以加快文件的访问速度。
+	pss\			用于保存备份系统启动配置文件。
+	Registration\	注册文件夹。
+	Resources\		系统资源类文件夹。
+	security\		系统安全文件夹，用于存放系统重要的数据文件。
+	ShellNew\		当选择“新建”命令时，其命令就将到此目录中寻找对应的模板文件。
+	system\			为系统文件夹，用来存放系统虚拟设备文件。
+	system32\		其为Windows文件夹中最重要的文件夹，一般用于存放Windows的系统文件和硬件驱动程序。
+	SysWOW64\		其作用与system32类似，只是专门用于存放64位的程序的。
+	Temp\			系统临时文件夹。
+	twain_32\		用于存放扫描仪相关的文件。
+	Web\			其中是Wallpaper文件夹用于存放桌面壁纸等文件。
+	WinSxS\			用于储存各个版本的Windows组件。
+	zh-CN\			表示简体中文语言。
+	Tasks\			计划任务的文件。
+	explorer.exe	管理桌面和任务栏。
+	regedit.exe		注册表。
+Program Files（用于储存软件的信息）
+PerfLogs（用于存放日记信息）
+
+[1]Windows文件夹一些文件和文件夹的作用:https://jingyan.baidu.com/article/295430f1c0c2920c7e005093.html
+[2]Windows系统盘文件夹:https://wenku.baidu.com/view/898b6a513c1ec5da50e2708d.html

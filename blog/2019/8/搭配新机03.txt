@@ -1,0 +1,14 @@
+﻿#date:init_time=2019/08/07;
+安装的文件：
+    Adobe系列软件（同下，真的好流氓呀）（用的......是淘宝版）
+    Chrome（因为它是默认安装的，应该改一下注册表中ProgramFilesDir相关的值）
+    PanDownload（本来想下客户端的，但是客户端该位置就会说权限不够云云，嗯，管理员身份运行都不够）
+    网易云音乐
+    bandizip
+    PotPlayer
+    Git for Windows
+    VS Code
+    VS Code Insiders（其实安装了上面的就不用安装这个了）
+    python
+    Everything
+    Irfanview
