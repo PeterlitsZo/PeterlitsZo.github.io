@@ -23,6 +23,10 @@ LaTeX学习手记01
 
 好像说下iso要快一点？www我都下了一个半个小时了才知道......而且有好多国内镜像网站都有相应的镜像来着。
 
+欸，我换操作系统了，现在在liunx底下，我也不知道怎么就好了？？？
+
+不熟悉的鸭～
+
 ### **第一个LeX文档（[官方文档链接](https://www.latex-project.org/help/documentation/)）**
 ``` tex
 % hello.tex
@@ -35,13 +39,13 @@ Hello World!
 不过不是我的第一个文档。。。
 
 语法有：
-|格式|注释|
-|:----:|----|
-|%|表示注释|
-|\documentclass[...]{...}|指明文档类，比如说article、report|
-|\usepackage{...}|载入宏包|
-|\begin{document}...\end{document}|正文区，也可以用这个来调配环境|
-|. . .|. . .|
+|               格式                | 注释                              |
+| :-------------------------------: | --------------------------------|
+|                 %                 | 表示注释                          |
+|     \documentclass[...]{...}      | 指明文档类，比如说article、report   |
+|         \usepackage{...}          | 载入宏包                          |
+| \begin{document}...\end{document} | 正文区，也可以用这个来调配环境    |
+|               . . .               | . . .                             |
 
 不过编写中文文档时，最优秀的方法是用ctex文档类来排版中文文档。
 
@@ -50,7 +54,7 @@ LikZ是一个用于绘图的LaTeX宏包。
 
 官方手册3.0.1，我在文末给出，更新于2019/08/11$^{[4]}$。
 
-LikZ包含两层：System Layer和Basic Layer。我们只需要调用其中的System Layer之类的专门抽象化的过程。
+- LikZ包含两层：System Layer和Basic Layer。我们只需要调用其中的System Layer之类的专门抽象化的过程。
 
 第一个tex tizk文档：
 ``` tex
@@ -94,14 +98,50 @@ TikZ中内建地最基本的就是path语句。使用以点开头，用path exte
 \tikz \draw (-0.5,-0.5) rectangle (-1,-1)
 ```
 
-#### 网格
+#### 网格与样式
 示例：
 ``` tex
 \begin{tikzpicture}
     \draw (-1,5,0) -- (1,5,0)
     \draw (0,-1.5) -- (0,1.5)
     \draw (0,0) circle [radius = 1cm]
-    \draw [step = 0.5cm] (-1,4)
+    \draw [step = 0.5cm] (-1.4,-1.4) grid (1.4,1.4)
+\end{tikzpicture}
+```
+
+其中( ... , ... ) grid ( ... , ... )也为path。是一种专门用来做出网格线的path。参数中还可以包含颜色（如gray）和粗细程度（如very thin)
+
+为了自定义一系列样式，还可以使用自定义样式的语句。
+``` tex
+    help lines/.style={color=blue!50,very thin}
+```
+
+而使用\tikzset语句来加载**全局**样式：
+``` tex
+\tikzset{Karl's grid/.style={help lines,color = blue!50}}
+...
+\draw[Karl's grid] (0,0) grid (5,5);
+```
+
+同样，样式也可以定义为有参数的形式：
+``` tex
+\begin{tikzpicture}
+    [Kari's grid/.style = {help lines,color = #1!50}
+     Kari's grid/.default = blue]
+    
+    \draw[Kari's grid]          (0,0) grid (1.5,2)
+    \draw[Kari's grid = red]    (2,0) grid (3.5,2)
+\end{tikzpicture}
+```
+
+#### 更多的样式
+颜色有两方面，一个是线的颜色，另一个是填充的颜色，可以分别用`color = <color>`和`draw = <color>`来设定。
+
+而关于线的粗细，有基本词thin，thick，semithick（好像不能加限定）和限定词very，ultra。
+
+线的虚实样式，由基本词dashed 和dotted 来定义，前面可以加限定词loosely，densely。
+
+文档说可以使用dash pattern 来设置。
 
 参考
 --------------------------------
