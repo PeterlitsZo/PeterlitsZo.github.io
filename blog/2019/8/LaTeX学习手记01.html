@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>**在vscode中搭配LaTeX环境**</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="LaTeX%E5%AD%A6%E4%B9%A0%E6%89%8B%E8%AE%B001">LaTeX学习手记01</h1>
+<h2 id="%E5%89%8D%E8%A8%80">前言</h2>
+<p>现在看看，感觉md真的还挺不错的，比如说要是用来做博客什么的，看起来也觉得：嗳，这不还可以吗？爱了爱了。</p>
+<p>直到我想新建一个使用了大量数学公式，又需要排版的文档。。。我佛了。</p>
+<p>啊啊，当然不是说MD不好。比如说现在写blog，真的没有必要用排版什么的，但是数学公式不一样啊。</p>
+<h2 id="%E6%AD%A3%E6%96%87">正文</h2>
+<h3 id="%E5%9C%A8vscode%E4%B8%AD%E6%90%AD%E9%85%8DLaTeX%E7%8E%AF%E5%A2%83"><strong>在vscode中搭配LaTeX环境</strong></h3>
+<p>首先在vscode中的扩展商店中安装LaTeX Workshop插件，这样就可以轻松编辑tex源文件了，但不是编译。</p>
+<p>然后要下载编译器，资料<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mrow><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">^{[1]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mtight">1</span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span></span></span></span>里说其实tex live<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mrow><mo stretchy="false">[</mo><mn>2</mn><mo stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">^{[2]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mtight">2</span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span></span></span></span>挺好的，emmm，好吧，你说什么就是什么（笑），我什么都不懂欸。</p>
+<p>下好了，然后发现它说安装路径只能有三个层级，哇哇哇哇，我想把它放到只装应用程序的文件夹了，但是好像不行欸。有点点难受，以后看看实在不行改改注册表？</p>
+<p>现在在等它下载完之前，还需要准备一个浏览PDF的应用程序，我嘛觉得chrome就挺好的的，至少对于我就够用了。所以我就不下了。</p>
+<p>在等他们下好之前，我先看看插件的文档先。</p>
+<p>好像说下iso要快一点？www我都下了一个半个小时了才知道......而且有好多国内镜像网站都有相应的镜像来着。</p>
+<h3 id="%E7%AC%AC%E4%B8%80%E4%B8%AALeX%E6%96%87%E6%A1%A3%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E9%93%BE%E6%8E%A5"><strong>第一个LeX文档（<a href="https://www.latex-project.org/help/documentation/">官方文档链接</a>）</strong></h3>
+<pre><code class="language-tex"><div><span class="hljs-comment">% hello.tex</span>
+<span class="hljs-tag">\<span class="hljs-name">documentclass</span><span class="hljs-string">[a4paper]</span><span class="hljs-string">{article}</span></span>
+<span class="hljs-tag">\<span class="hljs-name">usepackage</span><span class="hljs-string">{hyperref}</span></span>
+<span class="hljs-tag">\<span class="hljs-name">begin</span><span class="hljs-string">{document}</span></span>
+Hello World!
+<span class="hljs-tag">\<span class="hljs-name">end</span><span class="hljs-string">{document}</span></span>
+</div></code></pre>
+<p>不过不是我的第一个文档。。。</p>
+<p>语法有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">格式</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%</td>
+<td>表示注释</td>
+</tr>
+<tr>
+<td style="text-align:center">\documentclass[...]{...}</td>
+<td>指明文档类，比如说article、report</td>
+</tr>
+<tr>
+<td style="text-align:center">\usepackage{...}</td>
+<td>载入宏包</td>
+</tr>
+<tr>
+<td style="text-align:center">\begin{document}...\end{document}</td>
+<td>正文区，也可以用这个来调配环境</td>
+</tr>
+<tr>
+<td style="text-align:center">. . .</td>
+<td>. . .</td>
+</tr>
+</tbody>
+</table>
+<p>不过编写中文文档时，最优秀的方法是用ctex文档类来排版中文文档。</p>
+<h3 id="LikZ%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0"><strong>LikZ使用手记</strong></h3>
+<p>LikZ是一个用于绘图的LaTeX宏包。</p>
+<p>官方手册3.0.1，我在文末给出，更新于2019/08/11<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mrow><mo stretchy="false">[</mo><mn>4</mn><mo stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">^{[4]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mtight">4</span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span></span></span></span>。</p>
+<ul>
+<li>LikZ包含两层：System Layer和Basic Layer。我们只需要调用其中的System Layer之类的专门抽象化的过程。</li>
+</ul>
+<p>第一个tex tizk文档：</p>
+<pre><code class="language-tex"><div><span class="hljs-comment">%pgfmanual.pdf 2.1</span>
+<span class="hljs-comment">%in latex use the environment {tikzpicture}</span>
+<span class="hljs-comment">%in plain tex use \tikzpicture and \endtizkpicture</span>
+<span class="hljs-tag">\<span class="hljs-name">usepackage</span><span class="hljs-string">{tikz}</span></span>                   <span class="hljs-comment">%load tikz</span>
+<span class="hljs-tag">\<span class="hljs-name">begin</span><span class="hljs-string">{document}</span></span>
+    <span class="hljs-tag">\<span class="hljs-name">darw</span></span> (0,0) .. controls (1,1) and (2,1) .. (2,0)
+<span class="hljs-tag">\<span class="hljs-name">end</span><span class="hljs-string">{tikzpicture}</span></span>
+</div></code></pre>
+<p>但是也存在这种可能性：在tex上新建一个plain tex文件，专注于绘图：</p>
+<pre><code class="language-tex"><div><span class="hljs-tag">\<span class="hljs-name">input</span></span> tikz.tex
+<span class="hljs-tag">\<span class="hljs-name">baselineskip</span>=<span class="hljs-number">12pt</span></span>
+<span class="hljs-tag">\<span class="hljs-name">hsize</span>=<span class="hljs-number">6.3</span></span>truein
+<span class="hljs-tag">\<span class="hljs-name">vsize</span>=<span class="hljs-number">8.7</span></span>truein
+<span class="hljs-tag">\<span class="hljs-name">tikzpicture</span></span>                <span class="hljs-comment">%in tex, use this instead of begin{}</span>
+    <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (-1.5,0) -- (1.5,0);
+    <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (0,-1.5) -- (0,1.5);
+<span class="hljs-tag">\<span class="hljs-name">endtikzpicture</span></span>
+<span class="hljs-tag">\<span class="hljs-name">bye</span></span>                        <span class="hljs-comment">%hahaha. bye? looks fun</span>
+</div></code></pre>
+<p>还有conTeXt、采用内建型（inline）等等的解决方案。</p>
+<h4 id="%E7%BA%BF%E6%AE%B5">线段</h4>
+<p>TikZ中内建地最基本的就是path语句。使用以点开头，用path extension operations连接（比如说之前用过的--操作符）来新建一个path ,或者说另一个例子：</p>
+<pre><code class="language-tex"><div>&lt;start piont&gt; .. controls &lt;first control point&gt; and &lt;second control point&gt; .. &lt;end point&gt;
+<span class="hljs-comment">%可以删除and &lt;second control point&gt;，这样子，第一个控制点就会被使用两次。</span>
+</div></code></pre>
+<p>但是使用曲线等过程直接来画圆的话，并不需要这么麻烦。</p>
+<pre><code class="language-tex"><div><span class="hljs-comment">% 基本图形</span>
+<span class="hljs-tag">\<span class="hljs-name">tikz</span></span> <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (0,0) circle [radius=10pt];
+<span class="hljs-tag">\<span class="hljs-name">tikz</span></span> <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (0,0) ellipse [x radius=20pt, y radius=10pt];
+<span class="hljs-tag">\<span class="hljs-name">tikz</span></span> <span class="hljs-tag">\<span class="hljs-name">draw</span><span class="hljs-string">[rotate=30]</span></span> (0,0) ellipse [x radius=20pt, y radius=10pt]
+<span class="hljs-tag">\<span class="hljs-name">tikz</span></span> <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (-0.5,-0.5) rectangle (-1,-1)
+</div></code></pre>
+<h4 id="%E7%BD%91%E6%A0%BC%E4%B8%8E%E6%A0%B7%E5%BC%8F">网格与样式</h4>
+<p>示例：</p>
+<pre><code class="language-tex"><div><span class="hljs-tag">\<span class="hljs-name">begin</span><span class="hljs-string">{tikzpicture}</span></span>
+    <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (-1,5,0) -- (1,5,0)
+    <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (0,-1.5) -- (0,1.5)
+    <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (0,0) circle [radius = 1cm]
+    <span class="hljs-tag">\<span class="hljs-name">draw</span></span> [step = 0.5cm] (-1.4,-1.4) grid (1.4,1.4)
+<span class="hljs-tag">\<span class="hljs-name">end</span><span class="hljs-string">{tikzpicture}</span></span>
+</div></code></pre>
+<p>其中( ... , ... ) grid ( ... , ... )也为path。是一种专门用来做出网格线的path。参数中还可以包含颜色（如gray）和粗细程度（如very thin)</p>
+<p>为了自定义一系列样式，还可以使用自定义样式的语句。</p>
+<pre><code class="language-tex"><div>    help lines/.style={color=blue!50,very thin}
+</div></code></pre>
+<p>而使用\tikzset语句来加载<strong>全局</strong>样式：</p>
+<pre><code class="language-tex"><div><span class="hljs-tag">\<span class="hljs-name">tikzset</span><span class="hljs-string">{Karl's grid/.style={help lines,color = blue!50}</span></span>}
+...
+<span class="hljs-tag">\<span class="hljs-name">draw</span><span class="hljs-string">[Karl's grid]</span></span> (0,0) grid (5,5);
+</div></code></pre>
+<p>同样，样式也可以定义为有参数的形式：</p>
+<pre><code class="language-tex"><div><span class="hljs-tag">\<span class="hljs-name">begin</span><span class="hljs-string">{tikzpicture}</span></span>
+    [Kari's grid/.style = {help lines,color = #1!50}
+     Kari's grid/.default = blue]
+    
+    <span class="hljs-tag">\<span class="hljs-name">draw</span><span class="hljs-string">[Kari's grid]</span></span>          (0,0) grid (1.5,2)
+    <span class="hljs-tag">\<span class="hljs-name">draw</span><span class="hljs-string">[Kari's grid = red]</span></span>    (2,0) grid (3.5,2)
+<span class="hljs-tag">\<span class="hljs-name">end</span><span class="hljs-string">{tikzpicture}</span></span>
+</div></code></pre>
+<h4 id="%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%A0%B7%E5%BC%8F">更多的样式</h4>
+<p>颜色有两方面，一个是线的颜色，另一个是填充的颜色，可以分别用<code>color = &lt;color&gt;</code>和<code>draw = &lt;color&gt;</code>来设定。</p>
+<p>而关于线的粗细，有基本词thin，thick，semithick（好像不能加限定）和限定词very，ultra。</p>
+<p>线的虚实样式，由基本词dashed 和dotted 来定义，前面可以加限定词loosely，densely。</p>
+<p>文档说可以使用dash pattern 来设置。</p>
+<h2 id="%E5%8F%82%E8%80%83">参考</h2>
+<ul>
+<li>[1]<a href="https://zhuanlan.zhihu.com/p/38178015">使用VSCode编写LaTeX</a></li>
+<li>[2]<a href="https://tug.org/texlive/">TeX Live</a></li>
+<li>[3]<a href="https://www.cnblogs.com/jingwhale/p/4250296.html">LaTeX排版全解</a></li>
+<li>[4]<a href="http://www.texample.net/media/pgf/builds/pgfmanual_3.0.1a.pdf">官方网址</a>，<a href="./resources/pdf/pgfmanual.pdf">镜像(html文档下打开)</a>，<a href="../resources/pdf/pgfmanual.pdf">镜像(md文档下打开)</a></li>
+</ul>
+
+    </body>
+    </html>

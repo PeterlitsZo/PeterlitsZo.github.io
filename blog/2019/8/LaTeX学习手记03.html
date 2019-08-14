@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>坐标轴的变换</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="LaTeX%E5%AD%A6%E4%B9%A0%E6%89%8B%E8%AE%B002">LaTeX学习手记02</h1>
+<h2 id="%E6%AD%A3%E6%96%87">正文</h2>
+<h4 id="%E5%9D%90%E6%A0%87%E8%BD%B4%E7%9A%84%E5%8F%98%E6%8D%A2">坐标轴的变换</h4>
+<p>坐标轴可以使用option xshift 和yshift 来变换坐标轴。</p>
+<p>除此之外关于坐标轴有：rotate（倾斜坐标轴），scale（缩放）。</p>
+<pre><code class="language-tex"><div><span class="hljs-tag">\<span class="hljs-name">begin</span><span class="hljs-string">{tikzpicture}</span><span class="hljs-string">[even odd rule, rounded corners=2pt, x=10pt, y=10pt]</span></span>
+    <span class="hljs-tag">\<span class="hljs-name">filldraw</span><span class="hljs-string">[fillddraw=yellow!80!black]</span></span>    (0,0)   rectangle (1,1)
+             [xshift=5pt, yshift=5pt]       (0,0)   rectangle (1,1)
+             [rotate=30]                    (-1,-1) rectangle (2,2)
+<span class="hljs-tag">\<span class="hljs-name">end</span><span class="hljs-string">{tikzpicture}</span></span>
+</div></code></pre>
+<h4 id="for%E6%BF%80%E5%8A%A8">for!（激动）</h4>
+<p>tikz也有for循环:</p>
+<pre><code class="language-tex"><div><span class="hljs-comment">%\foreach是由pgffor来定义的。</span>
+<span class="hljs-tag">\<span class="hljs-name">foreach</span></span> <span class="hljs-tag">\<span class="hljs-name">x</span></span> in {1,2,3}  {<span class="hljs-formula">$x = <span class="hljs-tag">\<span class="hljs-name">x</span></span>$</span>,}
+<span class="hljs-comment">%输出x = 1,x = 2,x = 3,</span>
+</div></code></pre>
+<p>其中，<code>1,2,3,4,5,6,7,8,9,10</code>也等价于<code>1, ... ,10</code></p>
+<h4 id="%E6%B7%BB%E5%8A%A0%E6%96%87%E6%9C%AC">添加文本</h4>
+<p>使用node来添加文本。</p>
+<h2 id="%E5%8F%82%E8%80%83">参考</h2>
+<ul>
+<li>[1]<a href="http://www.texample.net/media/pgf/builds/pgfmanual_3.0.1a.pdf">官方网址</a>，<a href="./resources/pdf/pgfmanual.pdf">镜像(html文档下打开)</a>，<a href="../resources/pdf/pgfmanual.pdf">镜像(md文档下打开)</a></li>
+</ul>
+
+    </body>
+    </html>
