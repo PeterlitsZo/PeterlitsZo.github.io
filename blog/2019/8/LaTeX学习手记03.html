@@ -39,8 +39,27 @@
 <span class="hljs-comment">%输出x = 1,x = 2,x = 3,</span>
 </div></code></pre>
 <p>其中，<code>1,2,3,4,5,6,7,8,9,10</code>也等价于<code>1, ... ,10</code></p>
+<p>使用更多的值：有时候我们想同时给一个for 式子赋两个值，比如说下一次想使用(0,0.5)处添加一个&quot;\frac{1}{2}&quot;的文本。这两个值息息相关，而\foreach 也提供了相应方法：</p>
+<pre><code class="language-tex"><div><span class="hljs-tag">\<span class="hljs-name">foreach</span></span> <span class="hljs-tag">\<span class="hljs-name">x</span></span>/<span class="hljs-tag">\<span class="hljs-name">xtext</span></span> in {-1, -0.5/-<span class="hljs-tag">\<span class="hljs-name">frac</span><span class="hljs-string">{1}</span><span class="hljs-string">{2}</span></span> , 1}
+    <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (<span class="hljs-tag">\<span class="hljs-name">x</span></span> cm,1pt) -- (<span class="hljs-tag">\<span class="hljs-name">x</span></span> cm,-1pt) node[below] {<span class="hljs-formula">$<span class="hljs-tag">\<span class="hljs-name">xtext</span></span>$</span>};
+</div></code></pre>
 <h4 id="%E6%B7%BB%E5%8A%A0%E6%96%87%E6%9C%AC">添加文本</h4>
 <p>使用node来添加文本。</p>
+<p>可以使用<code>\anchor=&lt;anchor&gt;</code>来定义标注在对应点的方位。使用north，south，east 和west 或者由两个词汇表示的组合方位。</p>
+<p>同时，它们还有等价的option，比如说below，above，left，right。但与上面不同的是，它还可以设置偏移量：<code>below=1pt</code></p>
+<p>当添加的文本是与点相关的时候，直接把node 放在点(x,y)后面，当添加的文本与path 中的线相关的时候，可以把线放在-- operate 后面。与线相关时也有相应的option ，比如说是<code>[very]near strat</code>、<code>midway</code>之类的。</p>
+<p>使用pic 来为角添加文本。</p>
+<pre><code class="language-tex"><div><span class="hljs-tag">\<span class="hljs-name">begin</span><span class="hljs-string">{tikzpicture}</span><span class="hljs-string">[scale=3]</span></span>
+    <span class="hljs-tag">\<span class="hljs-name">coordinate</span></span> (A) at (1,0)
+    <span class="hljs-tag">\<span class="hljs-name">coordinate</span></span> (B) at (0,0)
+    <span class="hljs-tag">\<span class="hljs-name">coordinate</span></span> (C) at (30:1cm)
+
+    <span class="hljs-tag">\<span class="hljs-name">draw</span></span> (A) -- (B) -- (C)
+        pic [draw=green!50!black, fill=green!20, angle radius=9mm,
+             "<span class="hljs-formula">$<span class="hljs-tag">\<span class="hljs-name">alpha</span></span>$</span>"] {angle = A--B--C};
+    <span class="hljs-comment">% 好像还可以添加一个扇形欸... 好厉害。</span>
+<span class="hljs-tag">\<span class="hljs-name">end</span><span class="hljs-string">{tikzpicture}</span></span>
+</div></code></pre>
 <h2 id="%E5%8F%82%E8%80%83">参考</h2>
 <ul>
 <li>[1]<a href="http://www.texample.net/media/pgf/builds/pgfmanual_3.0.1a.pdf">官方网址</a>，<a href="./resources/pdf/pgfmanual.pdf">镜像(html文档下打开)</a>，<a href="../resources/pdf/pgfmanual.pdf">镜像(md文档下打开)</a></li>
