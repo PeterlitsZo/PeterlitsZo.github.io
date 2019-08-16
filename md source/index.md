@@ -16,7 +16,7 @@ PyQt学习之路
 
 [搞机日记02-尝试把默认安转路径改一下](https://peterlitszo.github.io/blog/2019/8/txt%20source/搭配新机02.txt)
 
-[搞机日记03-放弃了并打算重装系统](https://peterlitszo.github.io/blog/2019/8/txt%20source/搭配新机03.txt）
+[搞机日记03-放弃了并打算重装系统](https://peterlitszo.github.io/blog/2019/8/txt%20source/搭配新机03.txt)
 
 Py与注册表
 ---------------------------------------
