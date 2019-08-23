@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML, CSS and JavaScript 02.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/**
+ * GitHub Gist Theme
+ * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ */
+
+.hljs {
+  display: block;
+  background: white;
+  padding: 0.5em;
+  color: #333333;
+  overflow-x: auto;
+}
+
+.hljs-comment,
+.hljs-meta {
+  color: #969896;
+}
+
+.hljs-string,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-strong,
+.hljs-emphasis,
+.hljs-quote {
+  color: #df5000;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+  color: #a71d5d;
+}
+
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-attribute {
+  color: #0086b3;
+}
+
+.hljs-section,
+.hljs-name {
+  color: #63a35c;
+}
+
+.hljs-tag {
+  color: #333333;
+}
+
+.hljs-title,
+.hljs-attr,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #795da3;
+}
+
+.hljs-addition {
+  color: #55a532;
+  background-color: #eaffea;
+}
+
+.hljs-deletion {
+  color: #bd2c00;
+  background-color: #ffecec;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="https://peterlitszo.github.io/resources/css/markdown.css" type="text/css">
+</head>
+<body>
+<h1 id="html-css-and-javascript-02">HTML, CSS and JavaScript 02</h1>
+<h2 id="%E6%AD%A3%E6%96%87">正文</h2>
+<h3 id="javascript-%E5%88%9D%E6%AD%A5">JavaScript 初步</h3>
+<p>第二章的一开始对应的原文就是原书的第四节了。JavaScript。</p>
+<p>之前的无论是HTML 还是CSS 都不是程序设计语言和脚本语言。这让一般的HTML 页面不能进行交互（哈哈哈哈，我可能对一般有什么误解）。而JavaScript 作为一个易与HTML 页面结合的一种脚本语言就成了实现交互式的首选。</p>
+<h4 id="%E6%B7%BB%E5%8A%A0-javascript-%E8%84%9A%E6%9C%AC">添加 JavaScript 脚本</h4>
+<p>在Web 中，使用<code>&lt;script&gt;</code> 来把JS 脚本添加到Web 页面中。比如：</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="handlebars"><span class="xml">
+    <span class="hljs-comment">&lt;!-- 这是注释吧～
+    和C/C++ 的/* 和 */
+    好像哦......
+    都是多行注释呢
+    好像也支持C++式的
+    注释嘛--&gt;</span>
+</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</div></code></pre>
+<p>js 脚本可以放在不同的地方：</p>
+<ul>
+<li>在页面主体内：脚本的输出会成为页面的一部分。</li>
+<li>在<code>&lt;head&gt;</code> 标签之间：注意，不应该让头部的<code>&lt;head&gt;</code> 标签中的脚本创建输出。<code>&lt;head&gt;</code> 区域通常包括函数和信息（而不是内容）。</li>
+<li>在HTML 标签内（注意，标签之间和标签之内是不一样的）：这会成为事件处理程序。</li>
+<li>在单独的文件中：使用.js 后缀的文件来包含一个JavaScript 脚本。</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"filename.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</div></code></pre>
+<p>如上就是引入一个外部的JS 脚本的方法。（外部的js 文件除了可以增加它的模块化程度，也可以减少显示页面所花的时间。)</p>
+<h4 id="%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84-javascript-%E8%84%9A%E6%9C%AC">最基本的 JavaScript 脚本</h4>
+<p>JavaScript 可以做很多有用的事情，比如说放置一个按钮。</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>
+        <span class="hljs-attr">onclick</span>= <span class="hljs-string">"alert('You clicked the botton')"</span>&gt;</span>
+        Click Me!
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</div></code></pre>
+<p>虽然不是很清楚，但是原文中的意思好像是<code>onclick</code> 的后面是JS 脚本。————也就是说它在标签里面，成为了一个事件处理程序。</p>
+<h4 id="javascript-%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">JavaScript 变量和基本命令</h4>
+<p>在一个js 文档中，可以为之设置变量。（看了看，好像是面向对象的......想在脚本语言难不成都是面向对象的？）</p>
+<pre class="hljs"><code><div>now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+localtime = now.toString();
+utctime = now.toGMSTString();
+</div></code></pre>
+<p>真有意思，oop 真的是一个很棒的特性。</p>
+<p>最常用的命令就是在文档中输出的方法，<code>document.write</code>，比如说：</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">document</span>.write(<span class="hljs-string">"&lt;p&gt;&lt;strong&gt;Local time:&lt;/strong&gt; "</span> + localtime + <span class="hljs-string">"&lt;/p&gt;"</span>);
+<span class="hljs-built_in">document</span>.write(<span class="hljs-string">"&lt;p&gt;&lt;strong&gt;UTC time:&lt;/strong&gt; "</span> + utctime + <span class="hljs-string">"&lt;/p&gt;"</span>);
+</div></code></pre>
+<h4 id="javascript-%E8%84%9A%E6%9C%AC%E7%9A%84%E8%B0%83%E8%AF%95">JavaScript 脚本的调试</h4>
+<p>如果写的代码 js 可能有错误，而且又需要错误信息，那么可以打开浏览器的 <code>JavaScript Conaole</code> 命令，它会指出具体的错误。如果只是代码的行为不恰当，那么可以使用 <code>source</code> 选项卡，来仔细地调试————包括暂停、恢复运行和单步调试、设置断点。</p>
+<ul>
+<li>断点：在该点处停止运行。</li>
+<li>Step Over：代码将推进一行。</li>
+<li>Step Into：代码将推进一行，不过如果代码在调用另一个函数，则会进入那个行数的第一行。</li>
+<li>Step Out：当前行数结束执行，带入调用行数的下一个代码行。</li>
+</ul>
+<h4 id="%E6%89%A9%E5%B1%95%EF%BC%9Ahtml-%E5%92%8C-css-%E7%9A%84%E8%B0%83%E8%AF%95">扩展：HTML 和 CSS 的调试</h4>
+<p>如果想要调试 html 和 css，可以打开 <code>Developer Tools</code> 命令来检查元素（<code>Elements</code>），有错的代码会被浏览器自动改写成符合它自己标准的HTML 文件。可以通过它来调试HTML 和CSS 。</p>
+<h3 id="%E5%AD%97%E7%AC%A6">字符</h3>
+<h4 id="%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6">特殊字符</h4>
+<p>对于 Web 页面的特殊字符，可以使用<code>&amp;#num;</code>或者<code>&amp;letter;</code>来代替。（不过要我说......使用 utf8 格式的网页应该不用这么麻烦的把？）</p>
+<p>一些不至于使用 CSS 来显式指定文本格式的格式化字体，有以下标签更加符合 HTML 的新潮流。</p>
+<ul>
+<li><code>&lt;sup&gt;</code>：上标文本。</li>
+<li><code>&lt;sub&gt;</code>：下标文本。</li>
+<li><code>&lt;em&gt;</code>：强调文本。</li>
+<li><code>&lt;strong&gt;</code>：醒目的文本。</li>
+<li><code>&lt;pre&gt;</code>：等宽文本，保留空格和换行符。</li>
+</ul>
+<h4 id="%E6%96%87%E6%9C%AC%E6%A0%BC%E5%BC%8F">文本格式</h4>
+<p>而如果要使用 CSS 来指定文本格式，最主要的样式名称为：</p>
+<ul>
+<li>font-size</li>
+<li>font-family</li>
+<li>color</li>
+</ul>
+<h4 id="%E5%BC%95%E7%94%A8-web-%E8%B5%84%E6%BA%90%E4%B8%8A%E7%9A%84%E5%AD%97%E4%BD%93">引用 web 资源上的字体</h4>
+<p>为了使用在 web 界面上的文字，可以使用 src 属性定义一个新字体（而不至于依赖用户本地的字体库：</p>
+<pre class="hljs"><code><div>@<span class="hljs-keyword">font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'some_name_goes_here'</span>;
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'some_location_of_the_font_file'</span>);
+}
+</div></code></pre>
+<h4 id="%E6%89%A9%E5%B1%95">扩展</h4>
+<p>还可以使用 <code>text-align</code> 来定义对齐方式。</p>
+<h3 id="%E5%88%97%E8%A1%A8">列表</h3>
+<p>HTML 列表有 三种形式：有序列表，无序列表和定义列表。</p>
+<ul>
+<li>有序列表开始于<code>&lt;ol&gt;</code>，结束于<code>&lt;/ol&gt;</code>，列表项封闭在<code>&lt;li&gt;</code>标签中。</li>
+<li>无序列表的标签是<code>&lt;ul&gt;</code>，列表项和有序列表一样。</li>
+<li>定义列表开始于<code>&lt;dl&gt;</code>，其中<code>&lt;dt&gt;</code>对每个列表项，<code>&lt;dd&gt;</code>针对的是定义项。</li>
+</ul>
+<p>值得一提的是，列表支持相互嵌套。</p>
+<h3 id="%E8%A1%A8%E6%A0%BC">表格</h3>
+<p>使用<code>&lt;table&gt;</code>来创建表格，而<code>&lt;tr&gt;</code>用于创建表格行，<code>&lt;td&gt;</code>用来创建表格中的数据。对于表格中的标题行来说，使用<code>&lt;th&gt;</code>标签来标记。</p>
+<p>对于存在一列中又细分成了两行：</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" style="text-align: center"> ----- Title ----- </th>
+            <th style="text-align: center"> Description </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> Peterlits的冒险记 </td>
+            <td> 送给各位猪头少年的指南 </td>
+            <td> 专家评论：难以描述的感动 </td>
+        </tr>
+        <tr>
+            <td> 关于她 </td>
+            <td> 关于七子和不该抛弃的信念 </td>
+            <td> 专家无法评论，并表示我太难了 </td>
+        </tr>
+    </tbody>
+</table>
+<p>比如说上面的 Title 下面就有两行，是使用<code>&lt;th&gt;</code>中的属性<code>colspan</code>来定义的（看了看，好像这个应该叫作跨越，即强制一个单元格跨越表格的多行或多列的效果）：</p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">"2"</span>&gt;</span> ----- Title ----- <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+</div></code></pre>
+<p>关于文本在表中的位置，可以使用 <code>vertical-align</code> 来指定，比如说 <code>top</code>，<code>middle</code>，<code>bottom</code> 等等的属性。</p>
+<h2 id="%E6%80%BB%E7%BB%93">总结</h2>
+<p>这一次主要介绍了 JS 和一些特殊的 HTML 格式————比如说，表格，或者说，列表。当然，还谈到了关于文本格式的问题。</p>
+<p>现在第六章已经看完了从第四章一直到第七章～我就悄悄给我一个鼓励吧！<code>(*^__^*)</code> 嘻嘻……</p>
+<h2 id="%E5%8F%82%E8%80%83">参考</h2>
+<ul>
+<li>[1]<a href="http://www.w3.org/Style/CSS/">CSS完整参考指南</a>（虽然是官网，但是好像现在还没有找到标准文档）</li>
+<li>[2]HTML、CSS 和 JavaScript 入门经典</li>
+</ul>
+
+</body>
+</html>
