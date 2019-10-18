@@ -1,0 +1,54 @@
+\documentclass[b5paper]{ctexbook}
+\author{Peterlits}
+\title{高中物理}
+
+\usepackage[colorlinks,linkcolor=black]{hyperref}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{footnote}
+\usepackage{fancyhdr}
+\usepackage{layout}
+\usepackage{enumitem}[shortlabels]
+
+\setlist{leftmargin=4em, itemsep=0.1em, parsep=0em, topsep=0.2em, 
+			itemindent=0em, listparindent=0em, labelwidth=1em, labelsep=1em}
+
+\newcommand{\mathline}{\ \_\_\_\_\_\_\ }
+\newcommand{\mathc}{\hfill\mbox{（\mathline）}}
+% nl:new line
+\newcommand{\mathcnl}{\\\makebox[\linewidth][r]{（\mathline）}}
+\renewcommand{\figurename}{图}
+\newcommand{\emptypage}{
+	\newpage
+	\thispagestyle{empty}
+	\phantom{this page should be empty}
+	\newpage
+}
+
+\newenvironment{enumc}
+	{\begin{enumerate}[label=(\arabic*), labelsep=0.5em, labelwidth= 1.5em]}
+	{\end{enumerate}}
+
+\setlength{\marginparwidth}{0pt}
+\setlength{\oddsidemargin}{20pt}
+\setlength{\evensidemargin}{-9pt}
+
+\begin{document}
+	% \layout
+	\thispagestyle{empty}
+	\maketitle
+
+	\emptypage
+
+	\pagenumbering{Roman}
+	\tableofcontents
+
+	\emptypage
+	
+	\pagenumbering{arabic}
+	\mainmatter
+   \input{CHA/机械运动与物理模型.tex}
+
+\end{document}
