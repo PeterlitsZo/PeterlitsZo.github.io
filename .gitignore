@@ -1,6 +1,7 @@
 *
 **/*
 !.gitignore
+!index.html
 
 # do not ignore doc:
 !download/
