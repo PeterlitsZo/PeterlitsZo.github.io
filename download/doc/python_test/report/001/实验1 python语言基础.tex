@@ -1,0 +1,318 @@
+\documentclass[a4paper]{ctexart}
+
+\usepackage{layout}
+\setlength{\oddsidemargin}{10pt}
+\setlength{\textwidth}{431pt}
+\setlength{\headsep}{10pt}
+\setlength{\textheight}{628pt}
+
+\usepackage{enumitem}
+\setlist{leftmargin=4em, itemsep=0.1em, parsep=0em, topsep=0.2em, 
+			itemindent=0em, listparindent=0em, labelwidth=1.5em, labelsep=1em}
+
+\newcommand{\lineiin}{
+   \begin{center}
+      \rule{\textwidth}{0.1pt}
+   \end{center}
+}
+
+\title{苏州大学实验报告\footnote{注：本文档在 peterlits.com/download/doc/python\_test/report/001/index.html处}}
+\author{}
+
+\begin{document}
+   \maketitle
+
+   \begin{table}[!h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|}
+         \hline
+         院、系 & 计算机学院 & 年级专业 & 计算机科学 
+         & 姓名 & 周泓余 & 学号 & 1927405082 \\ \hline
+         课程名称 & \multicolumn{5}{c|}{Python 程序设计} & 成绩 & \\ \hline
+         指导老师 & \multicolumn{2}{c|}{}& 同组实验者 & 无 & 实验日期
+         & \multicolumn{2}{c|}{10月28号} \\
+         \hline
+      \end{tabular}
+      \caption{实验报告相关信息}
+   \end{table}
+
+   \section*{实验名称：实验一 Python 语言基础}
+   \subsection{实验目的}
+      通过本次实验要达到如下目的：
+      \begin{enumerate}
+         \item 掌握 Python 开发环境的使用
+         \item 掌握变量的使用方法
+         \item 了解数据的输入和输出方法
+         \item 了解并学会选择数据类型
+         \item 掌握算术运算符的使用
+         \item 掌握math模块中常用函数的使用
+      \end{enumerate}
+
+   \subsection{实验内容}
+      \begin{enumerate}
+         \item 从键盘输入两个正整数 a 和 b ，计算并输出 a除以 b 的商和余数。
+         \item 从键盘输入四个整数，并输出其中最大的数。
+         \item 编写程序让用户输入自己姓名，输出该姓名字符串的长度。
+         \item 一只大象口渴了，要喝20升水才能解渴，但现在只有一个深h厘米，%
+            底面半径为r厘米的小圆桶(h和r都是整数)。问大象至少要喝多少桶水才会解渴。%
+            编写程序输入半径和高度，输出需要的桶数（一定是整数）。
+         \item 编写程序让用户输入两个平面上点的坐标，计算该两点间的距离。
+         \item 产生一个随机3位正整数，并将该整数的数字首尾互换输出，%
+            例如：157 互换后为 751。
+      \end{enumerate}
+
+   \subsection{实验步骤和结果}
+      \subsubsection{实验之前}
+      在给出先关代码前，先定义 \verb|print_cm| 来定义输入容错和输入输出格式。
+   % <-
+   \lineiin
+   \begin{verbatim}
+   import re
+
+
+   class print_cm(object):
+      def __init__(self, *, indent:int = 4, ps:str = '>>> ', newline:bool = True):
+         self.ps1 = ' '*indent
+         self.ps2 = self.ps1*2 + ps
+         self.ps3 = self.ps1*2 + '{:2}' + ps[2:]
+         self.newline = newline
+         if self.newline == True:
+            print()
+   
+      def __del__(self):
+         if self.newline == True:
+            print()
+   
+      def __format_out(self, type, addition:object or [object, '...']=''):
+         if type == 'invalid format':
+            self.info('you have enter in wrong format, please try a again:')
+         elif type == 'in format':
+            self.info('Please Enter in format like:' \
+                     ' (enter only one {} one time):'.format(addition))
+         elif type == 'enter':
+            self.info('Please Enter {} {}:'.format(addition[0], addition[1]))
+   
+      def __format_re_in(self, ma_str, re_str, res_f, times = 1) \
+         -> [tuple(str and '...') or 'else... (by res_f)']:
+         """to input a format data
+   
+         ma_str(match re string): to match the target string
+         re_str(re string): input the re string to get data in format str or str tuple
+            : matched str -> tuple of str
+         res_f(result geting function): return the result by this result_func
+            : tuple('str', ...) -> the object you want
+         times: the len of the result list, or the times of loop
+         """
+         res = []
+   
+         for i in range(times):
+            while True:
+               input_ = self.enter(info=i+1)
+               # type of result: list of ‘str’ or tuple(‘str, ...)
+   
+               if input_ == '':
+                     # if here has no input at all
+                     continue
+               elif re.fullmatch(ma_str, input_):
+                  res_tuple = tuple(re.findall(re_str, input_))
+                  res.append( res_f(res_tuple) )
+                  break
+               else:
+                  self.__format_out('invalid format')
+                  self.info(f'What you had input is: {res}')
+         return res
+   
+      def enter(self, type:str = None, times:int = 1, *, info = None) \
+         -> [object, '...']:
+         re_float = r'(\d+(?:\.\d*)?|\.\d+)'
+         if type == 'int':
+            self.__format_out('enter', [times, 'int num'])
+            return self.__format_re_in(r' *[\+|-]? *\d+ *', r'\d+', \
+               lambda x: int(*x), times)
+         elif type == 'name':
+            self.__format_out('enter', [times, 'str'])
+            self.info('Please to know about it:')
+            self.info("iuput: ' Peterlits  Zo  '(ugly space) ->" \
+               " output:'Peterlits Zo'", indent=2)
+            result_func = lambda res: ' '.join([i for i in res])
+            return self.__format_re_in(r'\s*(\w+\s*)+', r'\w+', result_func, times)
+         elif type == 'pair':
+            self.__format_out('enter', [times, 'pair(2-d vector)'])
+            self.__format_out('in format', 'pair')
+            self.info("(4, 8) or (9.0, 2) or (.4, 0.2)", indent=2)
+            result_func = lambda res: tuple(float(i) for i in res)
+            re_str = r'\s*\(\s*{__f__}\s*,\s*{__f__}\s*\)\s*'.format(__f__ = re_float)
+            return self.__format_re_in(re_str, re_float, result_func, times)
+         else:
+            if info == None:
+               return input(self.ps2)
+            else:
+               return input(self.ps3.format(str(info)))
+   
+      def info(self, *info:str, indent = 1, with_ps = False):
+         for i in info:
+            if with_ps == True:
+               print(self.ps1*(indent-1) + self.ps2, i, sep='')
+            else:
+               print(self.ps1*indent, i, sep='')
+      \end{verbatim}
+      \lineiin
+      % ->
+         通过\verb|print_cm|对象实例的方法\verb|enter|和\verb|info|来进行输入输出。%
+         其中\verb|enter|支持\verb|pair|，\verb|int|，\verb|name|格式，%
+         提供人性化的可交互的输入输出。在使用该类的情况下：%
+         （所有代码在\verb|python3.8.0|环境运行)
+
+         \subsubsection{实验之中}
+         第一题程序如下：
+      % <-
+      \begin{verbatim}
+      pc = print_cm()
+      pc.info('请输入数字以求取商和余数：')
+      a, b = pc.enter('int', 2)
+      pc.info(f'{a} 除以 {b} 的商：{a//b}', f'{a} 除以 {b} 的余数：{a%b}')
+      \end{verbatim}
+      % ->
+
+         运行结果如下：
+      % <-
+      \begin{verbatim}
+      请输入数字以求取商和余数：
+      Please Enter 2 int num:
+         1 > 324df
+      you have enter in wrong format, please try a again:
+      What you had input is: []
+         1 > 23
+         2 > 243tf
+      you have enter in wrong format, please try a again:
+      What you had input is: [23]
+         2 > 12
+      23 除以 12 的商：1
+      23 除以 12 的余数：11
+      \end{verbatim}
+      % ->
+
+         第二题程序如下：
+      % <-
+      \begin{verbatim}
+      pc = print_cm()
+      pc.info('请输入数字以求取最大数')
+      a_list = pc.enter('int', 4)
+      pc.info(f'最大的数为{max(a_list)}')
+      \end{verbatim}
+      % ->
+
+         运行结果如下：
+      % <-
+      \begin{verbatim}
+      请输入数字以求取最大数
+      Please Enter 4 int num:
+         1 > 342
+         2 > 4653
+         3 > dfs
+      you have enter in wrong format, please try a again:
+      What you had input is: [342, 4653]
+         3 > 3547
+         4 > 234
+      最大的数为4653
+      \end{verbatim}
+      % ->
+
+         第三题程序如下：
+      % <-
+      \begin{verbatim}
+      pc = print_cm()
+      pc.info('请输入姓名以求取姓名的长度：')
+      a, = pc.enter('name')
+      pc.info(f'格式化后输入的字符串为{repr(a)}，总长度为{len(a)}')
+      \end{verbatim}
+      % ->
+
+         运行结果如下：
+      % <-
+      \begin{verbatim}
+      请输入姓名以求取姓名的长度：
+      Please Enter 1 str:
+      Please to know about it:
+         iuput: ' Peterlits  Zo  '(ugly space) -> output:'Peterlits Zo'
+         1 > Pfesjf4    reganj    
+      格式化后输入的字符串为'Pfesjf4 reganj'，总长度为14
+      \end{verbatim}
+      % ->
+
+         第四题程序如下：
+      % <-
+      \begin{verbatim}
+      import math
+      pc = print_cm()
+      pc.info('请分别输入水桶的深和底面半径，以求出一个特定的大象的喝水桶数：(cm)')
+      h, r = pc.enter('int', 2)
+      res = 20 * 1000 / (math.pi * r ** 2)*h
+      pc.info(f'需要的桶数为{math.floor(res)+1}')     
+      \end{verbatim}
+      % ->
+      
+         运行结果如下：
+      % <-
+      \begin{verbatim}
+      请分别输入水桶的深和底面半径，以求出一个特定的大象的喝水桶数：(cm)
+      Please Enter 2 int num:
+         1 > 
+         1 > 
+         1 > 1
+         2 > 7
+      需要的桶数为130
+      \end{verbatim}
+      % ->
+
+         第五题程序如下：
+      % <-
+      \begin{verbatim}
+      pc = print_cm()
+      pc.info('请输入平面上的两个点：')
+      p1, p2 = pc.enter('pair', 2)
+      get_len = lambda p1, p2: ((p1[0]-p2[0])**2 + (p1[1]+p2[1])**2)**.5
+      pc.info(f'两点之间的距离为{get_len(p1, p2)}')
+      \end{verbatim}
+      % ->
+
+         运行结果如下：
+      % <-
+      \begin{verbatim}
+      请输入平面上的两个点：
+      Please Enter 2 pair(2-d vector):
+      Please Enter in format like: (enter only one pair one time):
+         (4, 8) or (9.0, 2) or (.4, 0.2)
+         1 > (7,6)
+         2 > --
+      you have enter in wrong format, please try a again:
+      What you had input is: [(7.0, 6.0)]
+         2 > yi
+      you have enter in wrong format, please try a again:
+      What you had input is: [(7.0, 6.0)]
+         2 > (8,0)
+      两点之间的距离为6.082762530298219 
+      \end{verbatim}
+      % ->
+
+         第六题程序如下：
+      % <-
+      \begin{verbatim}
+      import random
+      rand_int = random.randint(100, 999)
+      pc = print_cm()
+      pc.info(f'产生的随机数字为{rand_int}，互换后为{str(rand_int)[::-1]}')
+      \end{verbatim}
+      % ->
+
+         运行结果如下：
+      % <-
+      \begin{verbatim}
+      产生的随机数字为191，互换后为191 
+      \end{verbatim}
+
+   \subsection{实验总结}
+      通过本次实验，我学会了vs code开发环境的使用；了解了程序开发的过程，%
+      加深理解程序运行的流程。学习基本操作符的使用。
+
+\end{document}
